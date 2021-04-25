@@ -1,5 +1,7 @@
 # fndmprsh
 
+Try out the find my parish [HERE](https://vildmedpap.github.io/fndmprsh/).
+
 ## Description
 
 Type in your address and know which parish you belong to.
