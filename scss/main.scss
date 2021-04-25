@@ -1,0 +1,39 @@
+@import "_colors.scss";
+@import "_fonts.scss";
+@import "_mixins.scss";
+
+@include reset();
+
+html {
+    height: 100%;
+}
+
+body {
+    @include flexbox-center;
+    height: 100%;
+    background: #283048;
+}
+
+#main {
+    @include size(40rem, 20rem);
+    @include flexbox-center;
+    border-radius: 0.5rem;
+    background: map-get($colors, red);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+        rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+
+    input {
+        border: none;
+        display: block;
+        width: 50%;
+        padding: 1rem;
+
+        &:focus {
+            outline: none;
+        }
+    }
+}
+
+[list]::-webkit-calendar-picker-indicator {
+    display: none;
+}
