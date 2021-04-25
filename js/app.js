@@ -31,6 +31,7 @@ const getParishFromAddress = async (address) => {
     const addressItem = await axios.get(generateURL(address));
     const parishItem = await axios.get(addressItem.data[0].adgangsadresse.href);
     alert(`You belong to the ${parishItem.data.sogn.navn} parish.`);
+    input.value = null;
 };
 
 // Checks whether the keydown was an input or value from the option list
