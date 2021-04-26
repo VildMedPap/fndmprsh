@@ -15,7 +15,7 @@ Purely frontend objectives:
 
 -   **HTML**: _datalist_
 -   **CSS**: _positioning with flex box_, _styling input_, _animation_
--   **JavaScript**: _axios_, _event listener on input, keydown, load_, _autocompletion_
+-   **JavaScript**: _axios_, _event listener on input, keydown, load_, _autocompletion_, _async await_
 
 ## Notes
 
