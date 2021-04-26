@@ -49,6 +49,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
   border-radius: 0.5rem;
   background: #b23a48;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
@@ -58,6 +59,7 @@ body {
   display: block;
   width: 50%;
   padding: 1rem;
+  background: #fbfbfb;
 }
 #main input:focus {
   outline: none;
@@ -65,6 +67,60 @@ body {
 
 [list]::-webkit-calendar-picker-indicator {
   display: none;
+}
+
+#graphics-container {
+  width: 40rem;
+  height: 10rem;
+  position: absolute;
+  top: -10rem;
+}
+#graphics-container svg {
+  position: absolute;
+  top: 0;
+  z-index: -1;
+  width: 10rem;
+  height: 10rem;
+  left: 2rem;
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+#graphics-container svg g {
+  fill: #b23a48;
+}
+#graphics-container #result-container {
+  left: 12rem;
+  padding-left: 1rem;
+  position: absolute;
+  z-index: -1;
+  bottom: 0;
+  transform: translate(0, 100%);
+}
+#graphics-container #result-container span {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fbfbfb;
+}
+#graphics-container #result-container span:first-of-type {
+  color: #b23a48;
+}
+
+.animate {
+  animation: showText 1s 0.5s forwards;
+}
+
+@keyframes showText {
+  0% {
+    transform: translate3d(0, 100%, 0);
+  }
+  40%, 60% {
+    transform: translate3d(0, 50%, 0);
+  }
+  100% {
+    transform: translate3d(0, 0%, 0);
+  }
 }
 
 /*# sourceMappingURL=main.css.map */

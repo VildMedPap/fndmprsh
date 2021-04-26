@@ -17,6 +17,7 @@ body {
 #main {
     @include size(40rem, 20rem);
     @include flexbox-center;
+    position: relative;
     border-radius: 0.5rem;
     background: map-get($colors, red);
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
@@ -27,6 +28,7 @@ body {
         display: block;
         width: 50%;
         padding: 1rem;
+        background: map-get($colors, white);
 
         &:focus {
             outline: none;
@@ -36,4 +38,61 @@ body {
 
 [list]::-webkit-calendar-picker-indicator {
     display: none;
+}
+
+#graphics-container {
+    @include size(40rem, 10rem);
+    position: absolute;
+    top: -10rem;
+
+    svg {
+        g {
+            fill: map-get($colors, red);
+        }
+        position: absolute;
+        top: 0;
+        z-index: -1;
+        @include size(10rem);
+        left: 2rem;
+        transform: scaleY(0);
+        transform-origin: bottom;
+        transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    }
+
+    #result-container {
+        left: 12rem;
+        padding-left: 1rem;
+        position: absolute;
+        z-index: -1;
+        bottom: 0;
+        transform: translate(0, 100%);
+
+        span {
+            display: block;
+            font-size: 2rem;
+            font-weight: 700;
+            color: map-get($colors, white);
+
+            &:first-of-type {
+                color: map-get($colors, red);
+            }
+        }
+    }
+}
+
+.animate {
+    animation: showText 1s 0.5s forwards;
+}
+
+@keyframes showText {
+    0% {
+        transform: translate3d(0, 100%, 0);
+    }
+    40%,
+    60% {
+        transform: translate3d(0, 50%, 0);
+    }
+    100% {
+        transform: translate3d(0, 0%, 0);
+    }
 }

@@ -6,6 +6,16 @@ const generateURL = (address) => {
     return `https://api.dataforsyningen.dk/adgangsadresser/autocomplete?q=${address}`;
 };
 
+const addAnimation = () => {
+    const resultDiv = document.getElementById("result-container");
+    resultDiv.classList.add("animate");
+};
+
+const removeAnimation = () => {
+    const resultDiv = document.getElementById("result-container");
+    resultDiv.classList.remove("animate");
+};
+
 const fetchAutocomplete = (address) => {
     axios
         .get(generateURL(address))
@@ -27,12 +37,21 @@ const clearDatalist = () => {
     datalist.innerHTML = null;
 };
 
+const revealParishSVG = () => {
+    const parish = document.getElementById("parish");
+    parish.style.transform = "scaleY(1)";
+};
+
 const getParishFromAddress = async (address) => {
     const addressItem = await axios.get(generateURL(address));
     const parishItem = await axios.get(addressItem.data[0].adgangsadresse.href);
-    alert(`You belong to the ${parishItem.data.sogn.navn} parish.`);
+    const resultSpan = document.getElementById("populate");
+    resultSpan.innerText = `${parishItem.data.sogn.navn} Sogn`;
+    addAnimation();
     input.value = null;
 };
+
+window.addEventListener("load", revealParishSVG);
 
 // Checks whether the keydown was an input or value from the option list
 input.addEventListener("keydown", (event) => {
@@ -41,6 +60,7 @@ input.addEventListener("keydown", (event) => {
 
 input.addEventListener("input", function (event) {
     clearDatalist();
+    removeAnimation();
     const address = event.target.value;
 
     if (eventSource === "list") {
